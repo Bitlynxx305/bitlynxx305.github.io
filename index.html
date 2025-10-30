@@ -1,130 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>BitLynxx Network</title>
+  <meta charset="utf-8" />
+  <title>BitLynxx Network Control Center</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="BitLynxx Network Control Center · Your world — connected, automated, aligned." />
+  <meta name="color-scheme" content="dark" />
   <style>
     :root {
-      --bg: radial-gradient(circle at top, #0f172a 0%, #020617 60%, #000 100%);
-      --card: rgba(15,23,42,.35);
-      --accent: #38bdf8;
-      --accent2: #22c55e;
-      --text: #e2e8f0;
-      --muted: #94a3b8;
+      --bg: radial-gradient(circle at top, #071522 0%, #020712 55%, #000000 100%);
+      --cyan: #14e1ff;
+      --magenta: #ff4fd8;
+      --yellow: #ffce32;
+      --text: #ecf7ff;
+      --muted: rgba(236, 247, 255, 0.6);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      background: var(--bg);
       min-height: 100vh;
+      background: var(--bg);
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 2.5rem 1.25rem 3rem;
+      padding: 1.5rem;
     }
-    .logo {
-      width: 70px;
-      height: 70px;
-      border-radius: 1.6rem;
-      background: radial-gradient(circle, rgba(34,197,94,.9), rgba(2,6,23,0));
+    .shell { text-align: center; max-width: 1080px; }
+
+    .logo-ring {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 1.5rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(20, 225, 255, 0.2) 0%, rgba(1,6,12,0) 70%);
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+    .logo-core {
+      width: 160px;
+      aspect-ratio: 1/1;
+      border-radius: 30% 70% 45% 55%;
+      background: radial-gradient(circle, #13fff6 0%, #0097e6 100%);
+      box-shadow: 0 0 25px rgba(0, 203, 255, 0.85), 0 0 95px rgba(0, 203, 255, 0.5);
       display: grid;
       place-items: center;
       font-weight: 700;
+      letter-spacing: 0.05em;
       font-size: 1.2rem;
-      letter-spacing: .02em;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(56,189,248,.3);
-      box-shadow: 0 0 40px rgba(34,197,94,.25);
+      color: #001;
+      text-align: center;
+      padding: 0 10px;
+      animation: breath 4s ease-in-out infinite;
+      text-shadow: 0 0 6px rgba(255,255,255,0.6);
     }
-    h1 {
-      font-size: clamp(2.1rem, 4vw, 3rem);
-      margin: 0 0 .6rem;
-      line-height: 1.05;
+    @keyframes breath {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.07); }
     }
-    p.subtitle {
-      font-size: 1.05rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
+
     .tagline {
-      background: rgba(15,23,42,.45);
-      border: 1px solid rgba(148,163,184,.12);
       display: inline-flex;
-      align-items: center;
-      gap: .4rem;
-      padding: .4rem .85rem .45rem;
+      gap: .25rem;
+      background: rgba(2, 145, 255, 0.12);
+      border: 1px solid rgba(2, 145, 255, 0.35);
+      border-radius: 999px;
+      padding: .35rem .9rem;
+      margin-bottom: 1.2rem;
+      font-size: .65rem;
+      text-transform: uppercase;
+      letter-spacing: .11em;
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin: 0 0 .75rem;
+    }
+    .sub { max-width: 42rem; margin: 0 auto 1.75rem; color: var(--muted); line-height: 1.5; }
+
+    .console {
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(12, 206, 255, 0.16);
+      border-radius: 1.25rem;
+      padding: 1.2rem 1.3rem 1.5rem;
+      max-width: 38rem;
+      margin: 0 auto 2.1rem;
+      text-align: left;
+      font-family: ui-monospace, SFMono-Regular, monospace;
+      font-size: .78rem;
+      color: #d5f9ff;
+      backdrop-filter: blur(14px);
+    }
+    .console-line { opacity: 0; animation: show 1s forwards; }
+    .console-line:nth-child(1){animation-delay: .3s;}
+    .console-line:nth-child(2){animation-delay: .7s;}
+    .console-line:nth-child(3){animation-delay: 1.1s;}
+    .console-line:nth-child(4){animation-delay: 1.5s;}
+    .console-line:nth-child(5){animation-delay: 1.9s;}
+    .console-line:nth-child(6){animation-delay: 2.3s;}
+    @keyframes show { to { opacity: 1; transform: translateY(0); } from { opacity: 0; transform: translateY(4px); } }
+    .ok { color: #35ff9c; }
+    .warn { color: #ffe066; }
+
+    .pills {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: .6rem; margin-bottom: 2rem;
+    }
+    .pill {
+      background: radial-gradient(circle, rgba(19, 255, 246, 0.24), rgba(0,0,0,0));
+      border: 1px solid rgba(12, 206, 255, 0.48);
+      padding: .45rem .95rem .55rem;
       border-radius: 999px;
       font-size: .7rem;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-      margin-bottom: 2rem;
+      transition: .15s;
     }
-    .btn-row {
-      display: flex;
-      gap: .75rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-top: 1.1rem;
+    .pill:hover { background: rgba(9, 208, 255, 0.2); transform: translateY(-1px); }
+
+    .enter-btn {
+      background: radial-gradient(circle, #14e1ff, #0a9fff);
+      border: 0;
+      color: #001;
+      font-weight: 700;
+      padding: .9rem 1.5rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      cursor: pointer;
+      box-shadow: 0 13px 35px rgba(5, 208, 255, 0.43);
+      transition: .15s;
     }
-    a.btn {
-      background: rgba(248,250,252,.03);
-      border: 1px solid rgba(226,232,240,.05);
-      padding: .55rem 1rem;
-      border-radius: .85rem;
-      color: #fff;
-      text-decoration: none;
-      font-size: .75rem;
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
-      transition: .12s ease;
-    }
-    a.btn.primary {
-      background: linear-gradient(135deg, #22c55e, #38bdf8);
-      border: none;
-      color: #0f172a;
-      font-weight: 600;
-      box-shadow: 0 15px 35px rgba(34,197,94,.35);
-    }
-    a.btn:hover {
-      transform: translateY(-2px);
-      filter: brightness(1.02);
-    }
+    .enter-btn:hover { transform: translateY(-2px); }
+
     footer {
-      position: fixed;
-      bottom: .7rem;
-      left: 0;
-      right: 0;
-      text-align: center;
+      margin-top: 3rem;
       font-size: .6rem;
-      color: rgba(148,163,184,.6);
+      color: rgba(236,247,255,0.4);
     }
   </style>
 </head>
 <body>
-  <div class="logo">BL</div>
-  <div class="tagline">
-    BitLynxx Network Control Center · Digital Command Hub
-  </div>
-  <h1>Your world — connected, automated, aligned.</h1>
-  <p class="subtitle">One network. Infinite possibilities.</p>
+  <main class="shell">
+    <div class="logo-ring">
+      <div class="logo-core">BITLYNXX305</div>
+    </div>
 
-  <div class="btn-row">
-    <a class="btn primary" href="https://plex.bitlynxx.com" target="_blank">Plex media</a>
-    <a class="btn" href="https://nas.bitlynxx.com" target="_blank">NAS / Synology</a>
-    <a class="btn" href="https://files.bitlynxx.com" target="_blank">Files / Cosmos</a>
-    <a class="btn" href="https://qb.bitlynxx.com" target="_blank">qBittorrent</a>
-    <a class="btn" href="https://home.bitlynxx.com" target="_blank">Home Assistant</a>
-  </div>
+    <div class="tagline">BitLynxx Network Control Center · Digital Command Hub</div>
+    <h1>Your world — connected, automated, aligned.</h1>
+    <p class="sub">One network. Infinite possibilities. Smart home, NAS, Plex, VPN, Docker, and field gear — all under one Miami-Cuba 305 brain 🏝️.</p>
 
-  <footer>
-    BitLynxx305 · Miami · Cuba en la sangre 🇨🇺 · 2025
-  </footer>
+    <div class="console">
+      <div class="console-line">▶ Initializing <strong>BitLynxx</strong> stack…</div>
+      <div class="console-line ok">✓ Connected to: <strong>10.0.0.77</strong> (Synology DSM)</div>
+      <div class="console-line ok">✓ Tunnels: <strong>Plex · Home Assistant · Files</strong></div>
+      <div class="console-line warn">… IPv6 not reachable, using IPv4 (ok)</div>
+      <div class="console-line ok">✓ DNS sync: <strong>*.bitlynxx.com</strong></div>
+      <div class="console-line ok">Status: <strong>ONLINE</strong> · Ready for commands.</div>
+    </div>
+
+    <div class="pills">
+      <span class="pill">Plex media</span>
+      <span class="pill">NAS / Synology</span>
+      <span class="pill">Files / Cosmos</span>
+      <span class="pill">qBittorrent</span>
+      <span class="pill">Home Assistant</span>
+      <span class="pill">Driverium</span>
+    </div>
+
+    <a href="https://bitlynxx.com" class="enter-btn">Enter Control Center</a>
+
+    <footer>BitLynxx · Miami – Cuba en la sangre 🇨🇺 · 305 · 2025</footer>
+  </main>
 </body>
 </html>
