@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>BitLynxx Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="BitLynxx Network Control Center · Your world — connected, automated, aligned." />
+  <style>
+    :root {
+      --bg: radial-gradient(circle at top, #0f172a 0%, #020617 60%, #000 100%);
+      --card: rgba(15,23,42,.35);
+      --accent: #38bdf8;
+      --accent2: #22c55e;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2.5rem 1.25rem 3rem;
+    }
+    .logo {
+      width: 70px;
+      height: 70px;
+      border-radius: 1.6rem;
+      background: radial-gradient(circle, rgba(34,197,94,.9), rgba(2,6,23,0));
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: .02em;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(56,189,248,.3);
+      box-shadow: 0 0 40px rgba(34,197,94,.25);
+    }
+    h1 {
+      font-size: clamp(2.1rem, 4vw, 3rem);
+      margin: 0 0 .6rem;
+      line-height: 1.05;
+    }
+    p.subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .tagline {
+      background: rgba(15,23,42,.45);
+      border: 1px solid rgba(148,163,184,.12);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .4rem .85rem .45rem;
+      border-radius: 999px;
+      font-size: .7rem;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+    }
+    .btn-row {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 1.1rem;
+    }
+    a.btn {
+      background: rgba(248,250,252,.03);
+      border: 1px solid rgba(226,232,240,.05);
+      padding: .55rem 1rem;
+      border-radius: .85rem;
+      color: #fff;
+      text-decoration: none;
+      font-size: .75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      transition: .12s ease;
+    }
+    a.btn.primary {
+      background: linear-gradient(135deg, #22c55e, #38bdf8);
+      border: none;
+      color: #0f172a;
+      font-weight: 600;
+      box-shadow: 0 15px 35px rgba(34,197,94,.35);
+    }
+    a.btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.02);
+    }
+    footer {
+      position: fixed;
+      bottom: .7rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-size: .6rem;
+      color: rgba(148,163,184,.6);
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">BL</div>
+  <div class="tagline">
+    BitLynxx Network Control Center · Digital Command Hub
+  </div>
+  <h1>Your world — connected, automated, aligned.</h1>
+  <p class="subtitle">One network. Infinite possibilities.</p>
+
+  <div class="btn-row">
+    <a class="btn primary" href="https://plex.bitlynxx.com" target="_blank">Plex media</a>
+    <a class="btn" href="https://nas.bitlynxx.com" target="_blank">NAS / Synology</a>
+    <a class="btn" href="https://files.bitlynxx.com" target="_blank">Files / Cosmos</a>
+    <a class="btn" href="https://qb.bitlynxx.com" target="_blank">qBittorrent</a>
+    <a class="btn" href="https://home.bitlynxx.com" target="_blank">Home Assistant</a>
+  </div>
+
+  <footer>
+    BitLynxx305 · Miami · Cuba en la sangre 🇨🇺 · 2025
+  </footer>
+</body>
+</html>
